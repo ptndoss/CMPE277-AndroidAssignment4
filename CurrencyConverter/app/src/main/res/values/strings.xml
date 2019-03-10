@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Currency Converter App</string>
+    <string name="dlr_amnt">Dollar Amount($):</string>
+    <string name="cnvrt_to">Convert To:</string>
+    <string name="cnvrt">Convert</string>
+    <string name="close">Close</string>
+    <string name="description">Dollar amount converted to </string>
+    <string name="currency_conversion">Currency Conversion Exchange</string>
+    <string name="brit_pound">British Pound</string>
+    <string name="euro">Euro</string>
+    <string name="indian_rupees">Indian Rupees</string>
+    <string name="dynamic_amount"></string>
+</resources>
