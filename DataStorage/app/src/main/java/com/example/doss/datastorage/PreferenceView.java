@@ -60,8 +60,21 @@ public class PreferenceView extends AppCompatActivity {
                 String channel = sharedpreferences.getString(STORE_PREFERENCES, "null");
 
 
+                editor.putInt("COUNTER", counter);
+                editor.putString("BookName", name);
+                editor.putString("BookAuthor", author);
+                editor.putString("Description",description);
+                editor.commit();
+
+                String bookName = sharedPreferences.getString("BookName", "null");
+                String bookAuthor = sharedPreferences.getString("BookAuthor", "null");
+                String bookDescription = sharedPreferences.getString("Description", "null");
+
+
+
                 OutputStreamWriter out=new OutputStreamWriter(openFileOutput(STORE_PREFERENCES,MODE_APPEND));
-                String message="\nSaved Preference "+counter+", "+s.format(new Date());
+
+                String message = "\nSaved Preference " +counter+ "\nBookName: " + bookName + "\nBookAuthor: " + bookAuthor + "\nDescription: " + bookDescription+"\n" + s.format(new Date());
                 out.write(message);
                 out.close();
             }
