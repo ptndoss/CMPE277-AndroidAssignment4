@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ServiceApp</string>
+    <string name="message">Please provide the list of five SJSU PDFs to download *hardcode of the files is file!or you can provide full qualified names..</string>
+
+</resources>
