@@ -46,14 +46,10 @@ public class DownloadServices extends Service {
         Log.i("<DOSS>", "OnStart Command"+fileName);
         new DoBackgroundTask().execute(urlPath,fileName);
 
+
         return START_STICKY;
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "Service Has been stopped", Toast.LENGTH_LONG).show();
-    }
 
     private class DoBackgroundTask extends AsyncTask<String, String, String> {
 
@@ -85,6 +81,7 @@ public class DownloadServices extends Service {
                 inputStream.close();
                 success = true;
 
+                onProgressUpdate(urls[1]);
 
             } catch (Exception e) {
                 Log.e("Error: ", e.getMessage());
@@ -92,29 +89,21 @@ public class DownloadServices extends Service {
 
             Log.i("<DOSS>","DownloadStatus " + success);
 
-            onProgressUpdate(urls[1]);
+//            onProgressUpdate(urls[1]);
             return null;
 
         }
 
 
-        protected void onProgressUpdate(Integer... progress) {
-          /*  Intent intent = new Intent(NOTIFICATION);
+        protected void onProgressUpdate(String filename) {
+
+            Log.i("<DOSS>","PrgressUpdate");
+            Intent intent = new Intent(NOTIFICATION);
             intent.putExtra("file", filename);
-            sendBroadcast(intent);*/
-
-            Log.d("Downloading files",
-                    String.valueOf(progress[0]) + "% downloaded");
-            Toast.makeText(getBaseContext(),
-                    String.valueOf(progress[0]) + "% downloaded",
-                    Toast.LENGTH_LONG).show();
-
+            sendBroadcast(intent);
         }
 
-        protected void onPostExecute(Long result) {
-            Toast.makeText(getBaseContext(),
-                    "Downloaded " + result + " bytes",
-                    Toast.LENGTH_LONG).show();
+        protected void onPostExecute(String filename) {
             stopSelf();
         }
     }
