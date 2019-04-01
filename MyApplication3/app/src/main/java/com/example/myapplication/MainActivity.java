@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     CameraManager cameraManager;
     SensorManager sensorManager;
     Sensor sensor;
-    private static final int CAMERA_REQUEST = 123;
+    private static final int CAMERA_REQUEST = 99;
     boolean hasCameraFlash = false;
     Button flashButton;
 
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
                 new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST);
         hasCameraFlash = getPackageManager().
                 hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-//        flashButton = (Button) findViewById(R.id.OnOff_btn);
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d("LightValue",""+event.values[0]);
-        if(event.values[0]==0) {
+        if(event.values[0]<=5) {
             flashLightOn(event.values[0]);
         }
         else {
