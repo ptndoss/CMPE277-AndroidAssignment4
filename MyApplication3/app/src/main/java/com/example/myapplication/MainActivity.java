@@ -40,17 +40,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
     }
 
-    public void onClick(View view) {
-        if (hasCameraFlash) {
-            Toast.makeText(MainActivity.this, "Flash Light Turned On",
-                    Toast.LENGTH_SHORT).show();
-
-        } else {
-            Toast.makeText(MainActivity.this, "No Flash Light Available",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     public void onResume() {
         super.onResume();
